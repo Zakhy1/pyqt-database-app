@@ -17,32 +17,32 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # модальные окна
 
-        self.interface.pushButton.clicked.connect(self.refresh_tables)
+        self.interface.toolButton.clicked.connect(self.refresh_tables)
         # Кнопки в категориях
         self.interface.pushButton_6.clicked.connect(self.add_category)
         self.interface.pushButton_5.clicked.connect(self.delete_category)
         # self.interface.pushButton_4.clicked.connect(self.edit_category)
         self.interface.pushButton_28.clicked.connect(self.extract_categories)
         # Кнопки в поставщиках
-        self.interface.pushButton_25.clicked.connect(self.add_provider)
-        self.interface.pushButton_26.clicked.connect(self.delete_provider)
+        self.interface.pushButton_32.clicked.connect(self.add_provider)
+        self.interface.pushButton_27.clicked.connect(self.delete_provider)
         # self.interface.pushButton_27.clicked.connect(self.edit_provider)
-        self.interface.pushButton_29.clicked.connect(self.extract_providers)
+        self.interface.pushButton_36.clicked.connect(self.extract_providers)
         # Кнопки в товарах
-        self.interface.pushButton_30.clicked.connect(self.add_product)
-        self.interface.pushButton_31.clicked.connect(self.delete_product)
+        self.interface.pushButton_39.clicked.connect(self.add_product)
+        self.interface.pushButton_38.clicked.connect(self.delete_product)
         # self.interface.pushButton_32.clicked.connect(self.edit_product)
-        self.interface.pushButton_33.clicked.connect(self.extract_products)
+        self.interface.pushButton_37.clicked.connect(self.extract_products)
         # Кнопки в продажах
-        self.interface.pushButton_7.clicked.connect(self.add_sale)
-        self.interface.pushButton_8.clicked.connect(self.delete_sale)
+        self.interface.pushButton_14.clicked.connect(self.add_sale)
+        self.interface.pushButton_9.clicked.connect(self.delete_sale)
         # self.interface.pushButton_9.clicked.connect(self.edit_sale)
-        self.interface.pushButton_34.clicked.connect(self.extract_sales)
+        self.interface.pushButton_41.clicked.connect(self.extract_sales)
         # Кнопки в сотрудниках
-        self.interface.pushButton_10.clicked.connect(self.add_user)
-        self.interface.pushButton_11.clicked.connect(self.delete_user)
+        self.interface.pushButton_12.clicked.connect(self.add_user)
+        self.interface.pushButton_13.clicked.connect(self.delete_user)
         # self.interface.pushButton_12.clicked.connect(self.edit_user)
-        self.interface.pushButton_35.clicked.connect(self.extract_users)
+        self.interface.pushButton_40.clicked.connect(self.extract_users)
 
         # Таблицы
         self.product_table = self.interface.tableView

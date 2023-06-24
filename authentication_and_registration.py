@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 
 import auth
 import register
+import terms_of_use
 
 
 class AuthWindow(QtWidgets.QWidget):
@@ -56,7 +57,12 @@ class Register(QtWidgets.QWidget):
         self.setWindowModality(2)
 
         self.validate_flag = False
+        self.register.pushButton.clicked.connect(self.show_terms_of_use)
         self.register.pushButton_2.clicked.connect(self.registerValidation)
+
+    def show_terms_of_use(self):
+        self.terms = Terms()
+        self.terms.show()
 
     def registerValidation(self):
         login = self.register.lineEdit.text()
@@ -93,3 +99,11 @@ class Register(QtWidgets.QWidget):
                 con.close()
         except sqlite3.Error as error:
             print(error)
+
+
+class Terms(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.terms = terms_of_use.Ui_Form()
+        self.terms.setupUi(self)
+        self.setWindowModality(2)
