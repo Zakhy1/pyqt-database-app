@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="backs">
+    <file>refresh-icon.png</file>
+    <file>back-image.png</file>
+    <file>logo.png</file>
+  </qresource>
+</RCC>

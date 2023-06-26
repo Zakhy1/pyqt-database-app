@@ -62,7 +62,7 @@ class DataBaseAdapter:
 
                 cursor.execute(f"INSERT INTO {table_name}({cols}) VALUES({vals})")
             else:
-                cursor.execute(f"INSERT INTO {table_name}({form_data[0][0]}) VALUES({form_data[0][1]})")
+                cursor.execute(f"INSERT INTO {table_name}({form_data[0][0]}) VALUES('{form_data[0][1]}')")
 
             con.commit()
             cursor.close()

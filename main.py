@@ -14,7 +14,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.interface = Ui_MainWindow()
         self.interface.setupUi(self)
 
-
         # модальные окна
 
         self.interface.toolButton.clicked.connect(self.refresh_tables)
@@ -70,23 +69,28 @@ class MainWindow(QtWidgets.QMainWindow):
             self.user_table.resizeColumnsToContents()
 
             # Таблица продаж
-            cursor.execute("SELECT id, user, product, time FROM sales")
+            cursor.execute("SELECT sales.id, users.name, products.name, time "
+                           "FROM sales "
+                           "JOIN users ON sales.user = users.id JOIN products ON sales.product = products.id")
             data = cursor.fetchall()
 
             self.sales_model = TableModel(data)
-            sales_model_labels = ["ID", "Идентификатор пользователя",
-                                  "Артикул продукта", "Время продажи"]
+            sales_model_labels = ["ID", "Пользователь",
+                                  "Товар", "Время продажи"]
             self.sales_model.setHorizontalHeaderLabels(sales_model_labels)
             self.sales_table.setModel(self.sales_model)
             self.sales_table.resizeColumnsToContents()
 
             # Таблица товаров
-            cursor.execute("SELECT id, name, category, price, provider, count FROM products")
+            cursor.execute("SELECT products.id, products.name, category.name, price, providers.name, count "
+                           "FROM products "
+                           "JOIN category ON category.id = products.category "
+                           "JOIN providers ON providers.id = products.provider")
             data = cursor.fetchall()
 
             self.product_model = TableModel(data)
             product_model_labels = ["ID", "Наименование", "Категория",
-                                    "Цена", "Производитель",  "Количество"]
+                                    "Цена", "Производитель", "Количество"]
             self.product_model.setHorizontalHeaderLabels(product_model_labels)
             self.product_table.setModel(self.product_model)
             self.product_table.resizeColumnsToContents()
@@ -206,5 +210,5 @@ if __name__ == "__main__":
     auth = AuthWindow()
     myapp = MainWindow()
     myapp.show()
-    # auth.show()
+    auth.show()
     sys.exit(app.exec_())
